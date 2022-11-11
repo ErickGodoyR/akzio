@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{master.html}">
+<head>
+<meta charset="utf-8">
+<title>INGRESAR RESPUESTA</title>
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link rel="stylesheet" href="sweetalert2.min.css">
+
+</head>
+
+<body>
+
+
+<div class="card align-items-center mt-3 mb-3" layout:fragment="content">
+
+<div class="titulo mt-3 mb-3">
+<h1 class="text-center"> ENCUESTA DEPORTES</h1>
+
+</div>
+
+
+<div class="card align-items-center" style="width: 18rem;">
+  <div class="card-body">
+
+<form action="" th:object="${encuesta}" method="POST">
+
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email</label>
+    <input type="email" class="form-control" name="mail" th:text="*{mail}" id="mail" aria-describedby="emailHelp">
+  </div>
+  
+  <div class="mb-3">
+    <label for="text" class="form-label">Deporte</label>
+    <input type="text" class="form-control" name="deporte" th:text="*{deporte}" id="deporte">	
+    	<!-- 
+    	<select id="deporte" class="form-select" name="deporte" th:text="*{deporte}">
+             <option></option>
+             <option value="atletismo">atletismo</option>
+             <option>futbol</option>
+             <option>basquetball</option>
+              <option>natacion</option>
+             <option>beisball</option>
+             <option>golf</option>
+              <option>tenis</option>
+             <option>paddle</option>
+             <option>handball</option>
+             <option>rugby</option>
+        </select>
+         -->
+    
+  </div>
+   
+  <button type="submit" class="btn btn-primary" id="boton">Guardar</button>
+
+
+</form>
+    
+    
+  </div>
+</div>
+
+
+</div> 
+  
+  <div class="footer mt-3" layout:fragment="scripts">
+     
+  </div>
+
+</body>
+</html>
