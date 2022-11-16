@@ -1,10 +1,25 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" 
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{master.html}">
+      layout:decorate="~{master.html}"
+      layout:onload="myOnLoad()">
 <head>
 <meta charset="utf-8">
 <title>INGRESAR RESPUESTA</title>
+
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+	crossorigin="anonymous">
+
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <link rel="stylesheet" href="sweetalert2.min.css">
@@ -27,6 +42,18 @@
 
 <form action="" th:object="${encuesta}" method="POST">
 
+<div th:if=${param.exito}>
+	<div class="alert alert-info">
+		Se ha registrado existosamente a la aplicación
+	</div>
+</div>
+
+<div th:if=${param.error}>
+	<div class="alert alert-danger">
+		Usuario o password inválidos
+	</div>
+</div>
+
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Email</label>
     <input type="email" class="form-control" name="mail" th:text="*{mail}" id="mail" aria-describedby="emailHelp">
@@ -35,21 +62,6 @@
   <div class="mb-3">
     <label for="text" class="form-label">Deporte</label>
     <input type="text" class="form-control" name="deporte" th:text="*{deporte}" id="deporte">	
-    	<!-- 
-    	<select id="deporte" class="form-select" name="deporte" th:text="*{deporte}">
-             <option></option>
-             <option value="atletismo">atletismo</option>
-             <option>futbol</option>
-             <option>basquetball</option>
-              <option>natacion</option>
-             <option>beisball</option>
-             <option>golf</option>
-              <option>tenis</option>
-             <option>paddle</option>
-             <option>handball</option>
-             <option>rugby</option>
-        </select>
-         -->
     
   </div>
    
@@ -68,6 +80,10 @@
   <div class="footer mt-3" layout:fragment="scripts">
      
   </div>
+
+<script th:src="@{/funcion.js}"></script>
+
+<script src="$@{/resource/template/funcion.js"}></script>
 
 </body>
 </html>

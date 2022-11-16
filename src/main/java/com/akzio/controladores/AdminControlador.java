@@ -35,11 +35,12 @@ public class AdminControlador {
 		  try {
 
 				servicio.guardarEncuesta(encuesta);
-				return "redirect:/";	
+				return "redirect:/admin?exito";
 				}catch (Exception e) {
-					 System.out.println(e.getMessage());
+					 //System.out.println(e.getMessage());
+					
 	        }
-		return "admin/index";       
+		return "redirect:/admin?error";       
 	    }
 		 
 	
